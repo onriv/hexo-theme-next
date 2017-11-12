@@ -11,7 +11,9 @@
 {% block content %}
   <section id="posts" class="posts-expand">
     {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
+      {% if not post.mathjax and not post.github and not post.math %}
+        {{ post_template.render(post, true) }}
+      {% endif %}
     {% endfor %}
   </section>
 
